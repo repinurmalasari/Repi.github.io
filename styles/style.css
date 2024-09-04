@@ -509,7 +509,7 @@ nav ul li {
   width: 100%;
   padding: 0.75rem 1.3rem;
   background-color: var(--primaryIconColor);
-  box-shadow: 0 0px 30px var(--primaryIconColor);
+  box-shadow: 0 0px 15px var(--primaryIconColor);
   transition: 0.4s ease-in-out;
   color: #fff;
   border: none;
@@ -520,9 +520,8 @@ nav ul li {
 
 .btn-submit:hover {
   background-color: var(--primaryIconColorHover);
-  box-shadow: 0 0 25px var(--primaryIconColorHover),
-    0 0 50px var(--primaryIconColorHover),
-    0 0 100px var(--primaryIconColorHover);
+  box-shadow: 0 0 5px var(--primaryIconColorHover),
+    0 0 15px var(--primaryIconColorHover), 0 0 40px var(--primaryIconColorHover);
 }
 
 /* Contact Section - Right Side */
