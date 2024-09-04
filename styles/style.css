@@ -11,8 +11,8 @@
   --secondaryBackgroundColor: #fbfbfb;
   --thirdBackgroundColor: #f5f3fe;
 
-  --primaryIconColor: #7e74f1;
-  --primaryIconColorHover: #5d51e8;
+  --primaryIconColor: #bcadb0;
+  --primaryIconColorHover: #9b8080;
 
   --sectionPadding: 6rem 0;
 
@@ -23,6 +23,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
   scroll-behavior: smooth;
 }
 
@@ -77,10 +80,13 @@ a {
   border: 1.5px solid var(--borderColor);
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  font-size: 1.2rem;
 }
 
 .btn:hover {
   box-shadow: rgb(0, 0, 0, 0.04) 0px 3px 5px;
+  border-bottom: 3px solid var(--primaryIconColorHover);
+  color: var(--primaryIconColorHover);
 }
 
 /* Titles */
@@ -97,6 +103,8 @@ a {
   width: fit-content;
   font-weight: 400;
   font-size: 0.9rem;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s ease;
 }
 
 .pre-title:before {
@@ -121,6 +129,15 @@ a {
   display: flex;
   justify-content: space-between;
   padding: 2rem 0;
+  font-size: 1.2rem;
+  margin-left: 4rem;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s ease;
+}
+
+.nav a:hover {
+  border-bottom: 3px solid var(--primaryIconColorHover);
+  color: var(--primaryIconColorHover);
 }
 
 .nav ul {
@@ -133,7 +150,9 @@ a {
   display: flex;
   align-items: center;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .logo a {
@@ -143,6 +162,10 @@ a {
 nav ul li {
   display: flex;
   align-items: center;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
 
 .nav ul li a {
@@ -182,11 +205,78 @@ nav ul li {
 }
 
 .hero-name span {
+  position: relative;
+  width: 10px;
+  height: 100%;
+}
+
+.hero-name span::before {
+  content: "Nurmalasari";
   color: var(--primaryIconColor);
+  animation: words 20s infinite;
+}
+
+.hero-name span::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 100%;
+  background-color: var(--borderColor);
+  border-left: 2px solid var(--primaryIconColorHover);
+  right: -8px;
+  animation: cursor 0.8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+  to {
+    border-left: 2px solid var(--primaryIconColorHover);
+  }
+}
+
+@keyframes words {
+  0%,
+  20% {
+    content: "Nurmalasari";
+  }
+}
+
+@keyframes typing {
+  10%,
+  15%,
+  30%,
+  35%,
+  50%,
+  55%,
+  70%,
+  75%,
+  90%,
+  95% {
+    width: 0;
+  }
+  5%,
+  20%,
+  25%,
+  40%,
+  45%,
+  60%,
+  65%,
+  80%,
+  85% {
+    width: calc(100% + 8px);
+  }
 }
 
 .hero-right img {
-  width: 90%;
+  width: 32vw;
+  border-radius: 50%;
+  box-shadow: 0 0px 30px var(--primaryIconColorHover);
+  transition: 0.4s ease-in-out;
+}
+
+.hero-right img:hover {
+  box-shadow: 0 0 30px var(--primaryIconColorHover),
+    0 0 50px var(--primaryIconColorHover),
+    0 0 100px var(--primaryIconColorHover);
 }
 
 .hero-right {
@@ -211,8 +301,17 @@ nav ul li {
 .service {
   padding: 3rem 2rem;
   text-align: center;
-  background: var(--primaryBackgroundColor);
+  background: var(--primaryIconColor);
   border-radius: var(--itemBorderRadius);
+  border: 5px solid transparent;
+  transition: 0.4s ease-in-out;
+}
+
+.service:hover {
+  background-color: var(--borderColor);
+  color: var(--primaryIconColor);
+  border: 5px solid var(--borderColor);
+  transform: scale(1.03);
 }
 
 .service h4 {
@@ -223,10 +322,18 @@ nav ul li {
 
 .service-icon {
   background: var(--thirdBackgroundColor);
+  box-shadow: 0 0px 20px var(--primaryIconColorHover);
+  transition: 0.4s ease-in-out;
   width: fit-content;
   margin: 0 auto;
   padding: 1rem 1.3rem;
   border-radius: 0.5rem;
+}
+
+.service-icon:hover {
+  box-shadow: 0 0 20px var(--primaryIconColorHover),
+    0 0 50px var(--primaryIconColorHover),
+    0 0 100px var(--primaryIconColorHover);
 }
 
 .service-icon svg {
@@ -239,9 +346,18 @@ nav ul li {
 }
 
 .portfolio {
+  padding: 3rem 2rem;
   border-radius: var(--itemBorderRadius);
   overflow: hidden;
-  border: 1px solid var(--borderColor);
+  border: 5px solid transparent;
+  transition: 0.5 ease-in-out;
+}
+
+.portfolio:hover {
+  background-color: var(--borderColor);
+  color: var(--primaryIconColor);
+  border: 5px solid var(--primaryIconColor);
+  transform: scale(1.03);
 }
 
 .portfolio-cover {
@@ -373,7 +489,9 @@ nav ul li {
   background: var(--secondaryBackgroundColor);
   border: 1px solid var(--borderColor);
   border-radius: 3px;
+  border: 2px solid var(--primaryIconColor);
   resize: none;
+  transition: 0.3s ease-in-out;
 }
 
 .contact-form input::placeholder,
@@ -391,6 +509,8 @@ nav ul li {
   width: 100%;
   padding: 0.75rem 1.3rem;
   background-color: var(--primaryIconColor);
+  box-shadow: 0 0px 30px var(--primaryIconColor);
+  transition: 0.4s ease-in-out;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -400,6 +520,9 @@ nav ul li {
 
 .btn-submit:hover {
   background-color: var(--primaryIconColorHover);
+  box-shadow: 0 0 25px var(--primaryIconColorHover),
+    0 0 50px var(--primaryIconColorHover),
+    0 0 100px var(--primaryIconColorHover);
 }
 
 /* Contact Section - Right Side */
@@ -411,6 +534,8 @@ nav ul li {
 
 .contact-item-icon {
   background: var(--thirdBackgroundColor);
+  box-shadow: 0 0px 25px var(--primaryIconColorHover);
+  transition: 0.4s ease-in-out;
   /* padding: 0.8 1rem; */
   width: 53px;
   height: 53px;
@@ -418,6 +543,12 @@ nav ul li {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.contact-item-icon:hover {
+  box-shadow: 0 0 25px var(--primaryIconColorHover),
+    0 0 50px var(--primaryIconColorHover),
+    0 0 100px var(--primaryIconColorHover);
 }
 
 .contact-item-icon svg {
@@ -445,8 +576,13 @@ footer {
 
 .footer-icons svg {
   fill: #3e3f40;
+  box-shadow: 0 0px 25px var(--primaryIconColorHover);
+  transition: 0.4s ease-in-out;
 }
 
 .footer-icons a:hover svg {
+  box-shadow: 0 0 30px var(--primaryIconColorHover),
+    0 0 50px var(--primaryIconColorHover),
+    0 0 100px var(--primaryIconColorHover);
   fill: #000;
 }
